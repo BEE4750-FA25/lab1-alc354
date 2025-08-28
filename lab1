@@ -1,0 +1,24 @@
+import Pkg
+Pkg.activate(".")
+Pkg.instantiate()
+
+using Plots
+
+function dot_product(x, y)
+    if size(x) == size(y) # insert test condition for equal lengths
+        # compute and return dot product
+        result = 0
+        for i in eachindex(x)
+            result += x[i] * y[i]
+        end
+        return result
+    else
+        throw(DimensionMismatch("length of x not equal to length of y"))
+    end
+end
+
+
+x = -5:5
+y = x.^2
+plot(x, y)
+
